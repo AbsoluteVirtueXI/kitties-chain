@@ -1,3 +1,11 @@
+run-tmp:
+	cargo run -- --dev --tmp -lruntime=debug
+
+purge:
+	cargo run -- purge-chain --dev -y
+
+restart: purge run
+
 .PHONY: init
 init:
 	./scripts/init.sh
@@ -12,8 +20,8 @@ test:
 
 .PHONY: run
 run:
-	 cargo run --release -- --dev --tmp
+	cargo run --release -- --dev --tmp
 
 .PHONY: build
 build:
-	 cargo build --release
+	cargo build --release
